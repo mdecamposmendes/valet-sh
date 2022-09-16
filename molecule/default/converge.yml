@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: apt update
+      apt:
+        update_cache: true
+
+    - name: "Include role-common"
+      include_role:
+        name: "common"
