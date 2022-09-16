@@ -18,10 +18,13 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies.
-        run: pip3 install pytest yamllint ansible-lint ansible "molecule[lint,docker]"
+        run: pip3 install pytest-testinfra pytest yamllint ansible-lint ansible "molecule[lint,docker]"
 
       - name: Install Galaxy dependencies.
         run: ansible-galaxy collection install community.general
 
       - name: Run molecule
-        run: "molecule create && molecule converge && molecule verify"
+        run: molecule create && molecule converge
+
+      - name: Run molecule verify
+        run: molecule verify
