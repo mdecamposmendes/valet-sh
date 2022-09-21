@@ -6,7 +6,7 @@ on:
       - molecule_testing
 
 jobs:
-  valet-sh-install-ubuntu-22.04:
+  valet-sh-install-ubuntu-22-04:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -23,7 +23,7 @@ jobs:
       - name: Run valet.sh install
         run: valet.sh install
 
-  valet-sh-install-ubuntu-20.04:
+  valet-sh-install-ubuntu-20-04:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
