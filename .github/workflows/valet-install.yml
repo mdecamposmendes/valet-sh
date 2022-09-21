@@ -21,7 +21,7 @@ jobs:
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
       - name: Run valet.sh install
-        run: valet.sh install
+        run: valet.sh install -d
 
   valet-sh-install-ubuntu-20-04:
     runs-on: ubuntu-20.04
@@ -38,7 +38,7 @@ jobs:
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
       - name: Run valet.sh install
-        run: valet.sh install
+        run: valet.sh install -d
 
   valet-sh-install-macos-12:
     runs-on: macOS-12
@@ -55,4 +55,4 @@ jobs:
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
       - name: Run valet.sh install
-        run: valet.sh install
+        run: valet.sh install -d
