@@ -6,7 +6,26 @@ on:
       - molecule_testing
 
 jobs:
-  molecule:
+  linting:
+    name: Ansibl-Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+
+  molecule-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,3 +47,6 @@ jobs:
 
       - name: Run molecule verify
         run: molecule verify
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+          PY_COLORS: '1'
