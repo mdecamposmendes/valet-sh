@@ -1,10 +1,31 @@
 ---
 - name: Converge
   hosts: all
+  become: true
   tasks:
     - name: apt update
       apt:
         update_cache: true
+
+    - name: Create wheel group
+      group:
+        name: wheel
+        state: present
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        state: present
+
+    - name: Add valet-sh user to wheel group
+      user:
+        name: valet-sh
+        groups: wheel
+        append: yes
+        state: present
+        createhome: yes
 
     - name: "Include valet-sh-install"
       include_role:
