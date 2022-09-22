@@ -6,6 +6,6 @@
       apt:
         update_cache: true
 
-    - name: "Include role-common"
+    - name: "Include valet-sh-install"
       include_role:
-        name: "common"
+        name: "valet-install"
