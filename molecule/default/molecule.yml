@@ -29,7 +29,8 @@ provisioner:
   log: true
   env:
     ANSIBLE_ROLES_PATH: "../../roles"
-
+    USER: 'valet-sh'
+    GROUP: 'valet-sh'
 
 verifier:
   name: testinfra
