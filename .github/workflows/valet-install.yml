@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - molecule_testing
-  pull_requests:
+  pull_request:
     branches:
       - molecule_testing
 
