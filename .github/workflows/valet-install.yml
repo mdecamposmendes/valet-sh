@@ -1,13 +1,16 @@
 name: Valet.sh Install
 
 on:
-  pull_request:
+  push:
+    branches:
+      - molecule_testing
+  pull_requests:
     branches:
       - molecule_testing
 
 jobs:
   valet-sh-install-ubuntu-22-04:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,6 +19,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+
+      - name: Install python packages
+        run: pip3 install -r requirements.txt
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
@@ -34,6 +40,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install python packages
+        run: pip3 install -r requirements.txt
+
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
@@ -50,6 +59,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+
+      - name: Install python packages
+        run: pip3 install -r requirements.txt
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
