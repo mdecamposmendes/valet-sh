@@ -15,33 +15,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install python packages
-        run: pip3 install -r requirements.txt
-
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
       - name: Run valet.sh install
-        run: valet.sh install -d
+        run: "valet.sh install -d"
 
   valet-sh-install-ubuntu-20-04:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install python packages
-        run: pip3 install -r requirements.txt
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
@@ -54,14 +38,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install python packages
-        run: pip3 install -r requirements.txt
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
