@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create groups
-        run: addgroup docker && addgroup runner
+        run: sudo addgroup docker && sudo addgroup runner
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
@@ -30,6 +30,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Create groups
+        run: sudo addgroup docker && sudo addgroup runner
+
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
 
@@ -41,9 +44,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Create groups
-        run: addgroup docker && addgroup runner
 
       - name: Install valet.sh
         run: "bash <(curl -fsSL https://raw.githubusercontent.com/valet-sh/install/master/install.sh)"
