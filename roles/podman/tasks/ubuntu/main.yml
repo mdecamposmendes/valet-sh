@@ -21,4 +21,4 @@
     state: present
 
 - name: Enable linger
-  ansible.builtin.command: loginctl enable-linger {{ ansible_user_id }}
+  ansible.builtin.command: loginctl enable-linger {{ current_user }}
