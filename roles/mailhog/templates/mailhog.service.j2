@@ -1,5 +1,8 @@
 [Unit]
 Description=Mailhog Service
+After=network-online.target local-fs.target
+Wants=network-online.target
+
 
 [Service]
 Type=exec
@@ -26,4 +29,4 @@ ExecReload=/usr/bin/podman restart mailhog
 ExecStop=/usr/bin/podman stop --time 10 mailhog
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
