@@ -117,7 +117,6 @@
   systemd:
     name: "{{ current_mariadb_key }}"
     state: started
-    enabled: true
     daemon_reload: true
     scope: user
 
@@ -127,7 +126,14 @@
     login_port: "{{ mariadb_server_104.port }}"
     login_user: root
     login_password: "{{ mariadb_server.default_root_password }}"
-  register: mysql_status
-  until: mysql_status is succeeded
+  register: mariadb_status
+  until: mariadb_status is succeeded
   retries: 30
   delay: 3
+
+- name: Stop {{ current_mariadb_key }} service after installation
+  when: mariadb_status is succeeded
+  systemd:
+    name: "{{ current_mariadb_key }}"
+    state: stopped
+    scope: user
