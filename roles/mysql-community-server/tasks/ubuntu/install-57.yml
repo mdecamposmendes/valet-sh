@@ -116,7 +116,6 @@
   systemd:
     name: "{{ current_mysql_key }}"
     state: started
-    enabled: true
     daemon_reload: true
     scope: user
 
@@ -130,3 +129,10 @@
   until: mysql_status is succeeded
   retries: 30
   delay: 3
+
+- name: Stop {{ current_mysql_key }} service after installation
+  when: mysql_status is succeeded
+  systemd:
+    name: "{{ current_mysql_key }}"
+    state: stopped
+    scope: user
