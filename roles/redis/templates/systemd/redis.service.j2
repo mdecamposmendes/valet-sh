@@ -1,6 +1,6 @@
 [Unit]
 Description=Redis-Server
-After=network-online.target
+After=network-online.target local-fs.target
 Wants=network-online.target
 
 [Service]
@@ -22,4 +22,4 @@ ExecReload=/usr/bin/podman restart redis
 ExecStop=/usr/bin/podman stop --time 10 redis
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
