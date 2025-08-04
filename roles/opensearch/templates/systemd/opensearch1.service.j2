@@ -1,6 +1,6 @@
 [Unit]
 Description=Opensearch 1
-After=network-online.target
+After=network-online.target local-fs.target
 Wants=network-online.target
 
 [Service]
@@ -24,4 +24,4 @@ ExecReload=/usr/bin/podman restart {{ current_opensearch_key }}
 ExecStop=/usr/bin/podman stop --time 10 {{ current_opensearch_key }}
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
