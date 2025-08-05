@@ -27,12 +27,17 @@
     pull: true
     state: present
 
+- name: "ensure user systemd directory exists"
+  file:
+    path: "{{ current_home }}/.config/systemd/user"
+    state: directory
+    mode: '0755'
+
 - name: Provide systemd service for redis-server container
   ansible.builtin.template:
     src: "systemd/redis.service.j2"
-    dest: "/etc/systemd/system/redis-server.service"
-    owner: root
-    group: root
+    dest: "{{ current_home }}/.config/systemd/user/redis-server.service"
+    owner: "{{ current_user }}"
+    group: "{{ current_group }}"
     mode: '0644'
   notify: "systemd | redis-server | restarted"
-  become: true
